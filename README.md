@@ -23,6 +23,21 @@ CocoTF is run as a pipeline on the command line.
 
 CocoTF consists of several scripts. However, running run_pipeline.sh (which contains sample cocoTF runs) runs pipeline.sh and mkdir.sh. 
 
+#### mkdir.sh
+
+This script creates all results folders for your project.
+- **p** the name of the project, this should be the same as the -p argument in pipeline.sh.
+
+The necessary folders are created in the main directory and are the following:
+```
+mkdir pipeline_results_${project}
+mkdir pipeline_results_${project}/known_results
+mkdir pipeline_results_${project}/bed_files
+mkdir pipeline_results_${project}/motif_files
+mkdir temp
+```
+If you are running CocoTf multiple times for the same project an error will occur where these folders will not be able to be created as they already exist. ignore this error.
+
 #### pipeline.sh
 
 - $motif_file **-m**: the PWM file/ motif file 
@@ -64,21 +79,16 @@ Once the **FOREGROUND** and **BACKGROUND** are determined, CocoTF performs motif
 ```
 findMotifsGenome.pl temp/TF_coordinates_ChIPseqregions_${MOTIF_NAME}.bed $genome ../pipeline_results_$project/${output_folder}_$size -bg temp/background_${INPUT_NAME}.bed -len 5,6,7,8,9,10,11,12 -size $size
 ```
-
-#### mkdir.sh
-
-This script creates all results folders for your project.
-- **p** the name of the project, this should be the same as the -p argument in pipeline.sh.
-
-The necessary folders are created in the main directory and are the following:
+**The list of enriched motifs (as part of the HOMER output) is copied into a separate folder, previously created in the mkdir.sh. This file is the one which will be processed using the making_network_dataframe.R**
 ```
-mkdir pipeline_results_${project}
-mkdir pipeline_results_${project}/known_results
-mkdir pipeline_results_${project}/bed_files
-mkdir pipeline_results_${project}/motif_files
-mkdir temp
+cp pipeline_results_$project/${output_folder}_$size/knownResults.txt pipeline_results_$project/known_results/knownResults_${output_folder}_$size.txt
 ```
-If you are running CocoTf multiple times for the same project an error will occur where these folders will not be able to be created as they already exist. ignore this error.
+CocoTF also concatenates all known motifs from HOMER output into a single file, named after the First Search motif and the tissue sample. Although CocoTF does not use these files for further analysis, it might be useful to have the enriched PWMs as a text file.
+```
+cd pipeline_results_$project/${output_folder}_$size/knownResults/ 
+#for f in *.motif; do TF="$(<"$f" grep -oP '(?<=\t).*?(?=/)')" && sed -i "1s/.*/>"$TF"/" "$f" ; done
+cat *.motif >> pipeline_results_$project/motif_files/${MOTIF_NAME}_all_known_motifs.txt
+```
 
 #### run_pipeline.sh
 Sample code within run_pipeline is:
@@ -89,6 +99,7 @@ bash scripts/mkdir.sh -p test_data
 bash scripts/pipeline.sh -m motifs/NeuroG1_palate.motif -f input_data/H3K27ac_palate_specific.bed  -o NeuroG1_palate_100 -b genomes/hg38.genome -p test_data
 
 ```
+
 
 #### making_network_dataframe.R
 ### CocoTF sample input data
