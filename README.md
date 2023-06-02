@@ -1,6 +1,7 @@
 # CocoTF: a pipeline to predict context-specific co-occurring TF motifs
 
 To investigate the combinatorial TF landscape of context-specific regulatory regions we designed cocoTF, a workflow to identify context-specific co-occurring TF motifs. CocoTF consists of two main steps. The first is the identification of context-specific TF whose motifs are enriched within the corresponding context-specific regulatory regions. We refer to these TFs as First Search TFs. The second step is to carry out motif enrichment analysis in regions flanking First Search TF motifs within regulatory regions of interest to identify co-occurring motifs. We refer to these as Second Search TFs.
+
 ![CocoTF diagram](CocoTF.PNG)
 
 ## CocoTF implementation
