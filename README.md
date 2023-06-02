@@ -102,7 +102,8 @@ file.list <- list.files(pattern = "\\.txt$")
 dir.create("p5e5") 
 dir.create("p5e5/Network")
 #pipeline_significant_known_motifs <- function(filename, filepath, outputpath, pvalue, enrichment)
-#apply the pipeline_significant_known_motifs function to all files in file.list. Switch $project for project name. In the example below, the ouput folder is p5e5, the p-value cut off is p<= 1e-5 and the enrichemnt cut-off is > 5% enrichment in the foreground, hence the 5, 5 parameters. A p-value parameter of 10 represents p<= 1e-10.
+#apply the pipeline_significant_known_motifs function to all files in file.list. Switch $project for project name. 
+#In the example below, the ouput folder is p5e5, the p-value cut off is p<= 1e-5 and the enrichemnt cut-off is > 5% enrichment in the foreground, hence the 5, 5 parameters. A p-value parameter of 10 represents p<= 1e-10.
 
 significant <- sapply(file.list, pipeline_significant_known_motifs,"pipeline_results_$project/known_results", "p5e5", 5, 5)
 ```
