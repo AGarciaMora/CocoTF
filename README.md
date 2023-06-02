@@ -65,13 +65,20 @@ Once the **FOREGROUND** and **BACKGROUND** are determined, CocoTF performs motif
 findMotifsGenome.pl temp/TF_coordinates_ChIPseqregions_${MOTIF_NAME}.bed $genome ../pipeline_results_$project/${output_folder}_$size -bg temp/background_${INPUT_NAME}.bed -len 5,6,7,8,9,10,11,12 -size $size
 ```
 
-
-
-
 #### mkdir.sh
 
 This script creates all results folders for your project.
 - **p** the name of the project, this should be the same as the -p argument in pipeline.sh.
+
+The necessary folders are created in the main directory and are the following:
+```
+mkdir pipeline_results_${project}
+mkdir pipeline_results_${project}/known_results
+mkdir pipeline_results_${project}/bed_files
+mkdir pipeline_results_${project}/motif_files
+mkdir temp
+```
+If you are running CocoTf multiple times for the same project an error will occur where these folders will not be able to be created as they already exist. ignore this error.
 
 #### run_pipeline.sh
 Sample code within run_pipeline is:
