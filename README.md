@@ -49,4 +49,7 @@ bash scripts/pipeline.sh -m motifs/NeuroG1_palate.motif -f input_data/H3K27ac_pa
 
 #### making_network_dataframe.R
 ### CocoTF sample input data
+### Link to academic paper
+### Bibliography
+
 
