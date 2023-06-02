@@ -90,15 +90,6 @@ cd pipeline_results_$project/${output_folder}_$size/knownResults/
 cat *.motif >> pipeline_results_$project/motif_files/${MOTIF_NAME}_all_known_motifs.txt
 ```
 
-#### run_pipeline.sh
-Sample code within run_pipeline is:
-
-```
-bash scripts/mkdir.sh -p test_data
-
-bash scripts/pipeline.sh -m motifs/NeuroG1_palate.motif -f input_data/H3K27ac_palate_specific.bed  -o NeuroG1_palate_100 -b genomes/hg38.genome -p test_data
-
-```
 
 #### making_network_dataframe.R
 ```
@@ -111,6 +102,16 @@ dir.create("p5e5/Network")
 significant <- sapply(file.list, pipeline_significant_known_motifs,"pipeline_results_$project/known_results", "p5e5",  5,5)
 ```
 ### CocoTF sample input data
+
+#### run_pipeline.sh
+Sample code within run_pipeline is:
+
+```
+bash scripts/mkdir.sh -p test_data
+
+bash scripts/pipeline.sh -m motifs/NeuroG1_palate.motif -f input_data/H3K27ac_palate_specific.bed  -o NeuroG1_palate_100 -b genomes/hg38.genome -p test_data
+
+```
 ### Link to academic paper
 ### Bibliography
 Heinz, S. et al. (2010) ‘Simple combinations of lineage-determining transcription factors prime cis-regulatory elements required for macrophage and B cell identities’, Molecular Cell, 38(4), pp. 576–589. doi:10.1016/j.molcel.2010.05.004. 
