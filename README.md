@@ -5,17 +5,17 @@ To investigate the combinatorial TF landscape of context-specific regulatory reg
 ## CocoTF implementation
 
 The code included in this repository, corresponds to CocoTF's second step: **identifying Second Search TFs**. Thus to run this code you should have:
-	- The PWM corresponding to your TF of interest.
-	- A set of input regulatory regions (e.g tissue-specific enhancers).
+1. The PWM corresponding to your TF of interest.
+2. A set of input regulatory regions (e.g tissue-specific enhancers).
 
 ### Required software
 CocoTF is run as a pipeline on the command line.
 
-Bedtools: CocoTF uses bedtools intersect and bedtools random.
+- Bedtools: CocoTF uses bedtools intersect and bedtools random.
 [Bedtools installation page](https://bedtools.readthedocs.io/en/latest/content/installation.html).
-HOMER: CocoTF uses scanMotifGenomeWide.pl and findMotifsGenome.pl.
+- HOMER: CocoTF uses scanMotifGenomeWide.pl and findMotifsGenome.pl.
 [HOMER installation page](http://homer.ucsd.edu/homer/introduction/install.html).
-R/Rstudio: CocoTF's output data is then formatted using an R script.
+- R/Rstudio: CocoTF's output data is then formatted using an R script.
 [Rstudio installation page](https://pages.github.com/).
 
 ### CocoTF scripts
@@ -40,12 +40,12 @@ This script creates all results forlders for your project.
 #### run_pipeline.sh
 Sample code within run_pipeline is:
 
-'''
+```
 bash scripts/mkdir.sh -p test_data
 
 bash scripts/pipeline.sh -m motifs/NeuroG1_palate.motif -f input_data/H3K27ac_palate_specific.bed  -o NeuroG1_palate_100 -b genomes/hg38.genome -p test_data
 
-'''
+```
 
 #### making_network_dataframe.R
 ### CocoTF sample input data
