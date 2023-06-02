@@ -43,6 +43,18 @@ Then CocoTF intersects all TF motif coordinates with inout regions of interest t
 bedtools intersect -a temp/TF_coordinates_${MOTIF_NAME}.bed -b $input_file > temp/TF_coordinates_ChIPseqregions_${MOTIF_NAME}.bed
 ```
 
+Next, CocoTF determines **BACKGROUND** regions by intersecting all First Search TF motif instances with a random set of 1kb genomic regions. The starting number of genomic regions is twice the number of regions in your input set. If your input regions are of another fixed width (e.g 5kb) change 1000nt for your desired width. 
+
+```
+#calculate number of starting background regions
+read lines <<< $(wc -l < $input_file)
+number=$((lines*2))
+#generate df of random 1000nt bins
+bedtools random -n $number -l 1000 -g $genome_file > temp/Random_genome_${INPUT_NAME}.bed
+#find instances of first search motif in the random bins
+bedtools intersect -a temp/TF_coordinates_${MOTIF_NAME}.bed -b temp/Random_genome_${INPUT_NAME}.bed > temp/background_${INPUT_NAME}.bed
+```
+
 
 
 
