@@ -7,8 +7,10 @@ To investigate the combinatorial TF landscape of context-specific regulatory reg
 ## CocoTF implementation
 
 The code included in this repository, corresponds to CocoTF's second step: **identifying Second Search TFs**. Thus to run this code you should have:
-1. The PWM corresponding to your TF of interest.
+1. The PWM corresponding to your previously identified First Search TFs.
 2. A set of input regulatory regions (e.g tissue-specific enhancers).
+
+If you do not have both of these, refer to the original publication for suggestions on how to identify context-specific TFs and regulatory regions using comparative studies of RNA-seq and corresponding H3K27ac data. If you clicked this link from the paper hoping to find code to identify First Search TFs, email the author who will do her best to help.
 
 ### Required software
 CocoTF is run as a pipeline on the command line.
