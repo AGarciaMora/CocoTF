@@ -33,6 +33,19 @@ CocoTF consists of several scripts. However, running run_pipeline.sh (which cont
 - **s** the size argument determines how many nucleotides either side of the first search TF motif are used for motif enrichment analysis. If remains unset, the default is 200 (100nt either side).
 - **p** the name of the project, this should be the same as the -p argument in mkdir.sh.
 
+First step is to identify all instances of the First Search TF motif in the genome:
+```
+scanMotifGenomeWide.pl $motif_file $genome  -bed > temp/TF_coordinates_${MOTIF_NAME}.bed
+```
+
+Then CocoTF intersects all TF motif coordinates with inout regions of interest to determine **FOREGROUND** regions:
+```
+bedtools intersect -a temp/TF_coordinates_${MOTIF_NAME}.bed -b $input_file > temp/TF_coordinates_ChIPseqregions_${MOTIF_NAME}.bed
+```
+
+
+
+
 #### mkdir.sh
 
 This script creates all results folders for your project.
