@@ -107,7 +107,9 @@ dir.create("p5e5/Network")
 
 significant <- sapply(file.list, pipeline_significant_known_motifs,"pipeline_results_$project/known_results", "p5e5", 5, 5)
 ```
-### CocoTF sample input data
+### CocoTF test run
+
+We have run a test of CocoTF using the NeuroG1 PWM and embryonic palate-specific regions from Gerrard et al. 2020.
 
 #### run_pipeline.sh
 Sample code within run_pipeline is:
@@ -120,6 +122,8 @@ bash scripts/pipeline.sh -m motifs/NeuroG1_palate.motif -f input_data/H3K27ac_pa
 ```
 ### Link to academic paper
 ### Bibliography
+Gerrard, D.T. et al. (2020) ‘Dynamic changes in the epigenomic landscape regulate human organogenesis and link to developmental disorders’, Nature Communications, 11(1). doi:10.1038/s41467-020-17305-2. 
+
 Heinz, S. et al. (2010) ‘Simple combinations of lineage-determining transcription factors prime cis-regulatory elements required for macrophage and B cell identities’, Molecular Cell, 38(4), pp. 576–589. doi:10.1016/j.molcel.2010.05.004. 
 
 Quinlan, A.R. and Hall, I.M. (2010) ‘BEDTools: A flexible suite of utilities for comparing genomic features’, Bioinformatics, 26(6), pp. 841–842. doi:10.1093/bioinformatics/btq033. 
