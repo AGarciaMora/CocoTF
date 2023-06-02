@@ -27,29 +27,29 @@ echo "TF is" $MOTIF_NAME
 echo "sample is" $INPUT_NAME
 
 ######find all instances of first motif in the selected genome
-scanMotifGenomeWide.pl $motif_file $genome  -bed > temp/TF_coordinates_${MOTIF_NAME}.bed
+#scanMotifGenomeWide.pl $motif_file $genome  -bed > temp/TF_coordinates_${MOTIF_NAME}.bed
 #cp temp/TF_coordinates_${MOTIF_NAME}.bed ../pipeline_results_$project/bed_files/${MOTIF_NAME}_$genome.bed
 
 echo "all instances of motif in the genome found"
 ########find instances of first search motif within tissue-specific putative enhancer regions using bedtools intersect
-bedtools intersect -a temp/TF_coordinates_${MOTIF_NAME}.bed -b $input_file > temp/TF_coordinates_ChIPseqregions_${MOTIF_NAME}.bed
-cp temp/TF_coordinates_ChIPseqregions_${MOTIF_NAME}.bed ../pipeline_results_$project/bed_files/${MOTIF_NAME}_$INPUT_NAME.bed
+#bedtools intersect -a temp/TF_coordinates_${MOTIF_NAME}.bed -b $input_file > temp/TF_coordinates_ChIPseqregions_${MOTIF_NAME}.bed
+cp temp/TF_coordinates_ChIPseqregions_${MOTIF_NAME}.bed pipeline_results_$project/bed_files/${MOTIF_NAME}_$INPUT_NAME.bed
 
 echo "all instances of motif in candidate enhancer regions found"
 
 #######create bg, with first search motif instances in randome genomic regions#####
 #find number of input regions*2
-read lines <<< $(wc -l < $input_file)
-number=$((lines*2))
+#read lines <<< $(wc -l < $input_file)
+#number=$((lines*2))
 #generate df of random 1000nt bins
-bedtools random -n $number -l 1000 -g $genome_file > temp/Random_genome_${INPUT_NAME}.bed
-find instances of first search motif in the random bins
-bedtools intersect -a temp/TF_coordinates_${MOTIF_NAME}.bed -b temp/Random_genome_${INPUT_NAME}.bed > temp/background_${INPUT_NAME}.bed
+#bedtools random -n $number -l 1000 -g $genome_file > temp/Random_genome_${INPUT_NAME}.bed
+#find instances of first search motif in the random bins
+#bedtools intersect -a temp/TF_coordinates_${MOTIF_NAME}.bed -b temp/Random_genome_${INPUT_NAME}.bed > temp/background_${INPUT_NAME}.bed
 
 echo "instances of motif in random genomic regions for background found"
 
 ######use homer to find enriched motifs around first search motif in enhancers vs first search motifs in random genomic regions
-findMotifsGenome.pl temp/TF_coordinates_ChIPseqregions_${MOTIF_NAME}.bed $genome pipeline_results_$project/${output_folder}_$size -bg temp/background_${INPUT_NAME}.bed -len 5,6,7,8,9,10,11,12 -size $size
+#findMotifsGenome.pl temp/TF_coordinates_ChIPseqregions_${MOTIF_NAME}.bed $genome ../pipeline_results_$project/${output_folder}_$size -bg temp/background_${INPUT_NAME}.bed -len 5,6,7,8,9,10,11,12 -size $size
 
 echo "enrichment analysis completed"
 
