@@ -49,7 +49,7 @@ bedtools intersect -a temp/TF_coordinates_${MOTIF_NAME}.bed -b temp/Random_genom
 echo "instances of motif in random genomic regions for background found"
 
 ######use homer to find enriched motifs around first search motif in enhancers vs first search motifs in random genomic regions
-findMotifsGenome.pl temp/TF_coordinates_ChIPseqregions_${MOTIF_NAME}.bed $genome ../pipeline_results_$project/${output_folder}_$size -bg temp/background_${INPUT_NAME}.bed -len 5,6,7,8,9,10,11,12 -size $size
+findMotifsGenome.pl temp/TF_coordinates_ChIPseqregions_${MOTIF_NAME}.bed $genome pipeline_results_$project/${output_folder}_$size -bg temp/background_${INPUT_NAME}.bed -len 5,6,7,8,9,10,11,12 -size $size
 
 echo "enrichment analysis completed"
 
@@ -63,14 +63,14 @@ echo "temporary files removed"
 
 #copy files in separate folders for downstream analysis
 #knownResults
-cp ../pipeline_results_$project/${output_folder}_$size/knownResults.txt ../pipeline_results_$project/known_results/knownResults_${output_folder}_$size.txt
+cp pipeline_results_$project/${output_folder}_$size/knownResults.txt pipeline_results_$project/known_results/knownResults_${output_folder}_$size.txt
 
 echo "known motifs copied into known_results folder"
 
 #motif matrices
-cd ../pipeline_results_$project/${output_folder}_$size/knownResults/ 
+cd pipeline_results_$project/${output_folder}_$size/knownResults/ 
 #for f in *.motif; do TF="$(<"$f" grep -oP '(?<=\t).*?(?=/)')" && sed -i "1s/.*/>"$TF"/" "$f" ; done
-cat *.motif >> ../../../pipeline_results_$project/motif_files/${MOTIF_NAME}_all_known_motifs.txt
+cat *.motif >> pipeline_results_$project/motif_files/${MOTIF_NAME}_all_known_motifs.txt
 echo "all PWM of known motifs concatenated into all_known_motif.txt file"
 
 cd /home/mbmhtagg/Documents/chapter_2/script
