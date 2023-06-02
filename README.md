@@ -25,13 +25,13 @@ CocoTF consists of several scripts. However, running run_pipeline.sh (which cont
 
 #### pipeline.sh
 
-- **m** the PWM file/ motif file 
-- **f** the input file containing context-specific regions matching the context at which the TF of interest is specifically expressed (e.g ventricle-specific enhancers and ventricle-restricted TF GATA4).
-- **g** genome build (e.g mm9, mm10, hg38). If this is unset, the default is hg38.
-- **b** genome file, including file path. Currently hg38 and mm19 files are stored within genomes folder
-- **o** name of the output folder
-- **s** the size argument determines how many nucleotides either side of the first search TF motif are used for motif enrichment analysis. If remains unset, the default is 200 (100nt either side).
-- **p** the name of the project, this should be the same as the -p argument in mkdir.sh.
+- $motif_file **-m** the PWM file/ motif file 
+- $input_file **-f** the input file containing context-specific regions matching the context at which the TF of interest is specifically expressed (e.g ventricle-specific enhancers and ventricle-restricted TF GATA4).
+- $genome **-g** genome build (e.g mm9, mm10, hg38). If this is unset, the default is hg38.
+- $genome_file **-b** genome file, including file path. Currently hg38 and mm19 files are stored within genomes folder
+- $output_folder **-o** name of the output folder
+- $size **-s** the size argument determines how many nucleotides either side of the first search TF motif are used for motif enrichment analysis. If remains unset, the default is 200 (100nt either side).
+- $project **-p** the name of the project, this should be the same as the -p argument in mkdir.sh.
 
 First step is to identify all instances of the First Search TF motif in the genome:
 ```
