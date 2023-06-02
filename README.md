@@ -34,7 +34,7 @@ CocoTF consists of several scripts. However, running run_pipeline.sh (which cont
 
 #### mkdir.sh
 
-This script creates all results forlders for your project.
+This script creates all results folders for your project.
 - **p** the name of the project, this should be the same as the -p argument in pipeline.sh.
 
 #### run_pipeline.sh
