@@ -60,6 +60,10 @@ bedtools random -n $number -l 1000 -g $genome_file > temp/Random_genome_${INPUT_
 #find instances of first search motif in the random bins
 bedtools intersect -a temp/TF_coordinates_${MOTIF_NAME}.bed -b temp/Random_genome_${INPUT_NAME}.bed > temp/background_${INPUT_NAME}.bed
 ```
+Once the **FOREGROUND** and **BACKGROUND** are determined, CocoTF performs motif enrichment analysis 100nt either side of the first TF motif in foreground and background. In pipeline.sh, the window size is 100nt either side as default, but it can be changed with the **-s**/$size parameter.
+```
+findMotifsGenome.pl temp/TF_coordinates_ChIPseqregions_${MOTIF_NAME}.bed $genome ../pipeline_results_$project/${output_folder}_$size -bg temp/background_${INPUT_NAME}.bed -len 5,6,7,8,9,10,11,12 -size $size
+```
 
 
 
