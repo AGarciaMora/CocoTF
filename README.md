@@ -104,6 +104,10 @@ dir.create("p5e5/Network")
 #apply the pipeline_significant_known_motifs function to all files in file.list. Switch $project for project name.
 significant <- sapply(file.list, pipeline_significant_known_motifs,"pipeline_results_$project/known_results", "p5e5",  5,5)
 ```
+
+```
+
+```
 ### CocoTF sample input data
 
 #### run_pipeline.sh
