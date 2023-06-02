@@ -113,5 +113,7 @@ significant <- sapply(file.list, pipeline_significant_known_motifs,"pipeline_res
 ### CocoTF sample input data
 ### Link to academic paper
 ### Bibliography
+Heinz, S. et al. (2010) ‘Simple combinations of lineage-determining transcription factors prime cis-regulatory elements required for macrophage and B cell identities’, Molecular Cell, 38(4), pp. 576–589. doi:10.1016/j.molcel.2010.05.004. 
+Quinlan, A.R. and Hall, I.M. (2010) ‘BEDTools: A flexible suite of utilities for comparing genomic features’, Bioinformatics, 26(6), pp. 841–842. doi:10.1093/bioinformatics/btq033. 
 
 
